@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Portfolio</title>
+</head>
+
+<body>
+    <h1>Name</h1>
+    <h2>titles</h2>
+    <main>
+        <div class="bioEle"></div>
+    </main>
+
+    <script src="./data/countries_data.js"></script>
+    <script src="./scripts/main.js"></script>
+    <style>
+        * {
+            margin: 20pt;
+            font-family: Roboto;
+            letter-spacing: 2pt;
+        }
+
+        h1 {
+            font-size: 28pt;
+        }
+
+        h2 {
+            background-color: rgba(120, 0, 0, 0.2);
+            padding: 10pt;
+        }
+
+        .skillContainer {
+            gap: 10pt;
+        }
+
+        .skillEle {
+            background-color: rgba(120, 0, 0, 0.02);
+            border-radius: 5pt;
+            border-style: solid;
+            border-color: rgba(120, 0, 0, 0.1);
+            padding: 10pt;
+            padding-top: 10%;
+            padding-bottom: 10%;
+            text-align: center;
+        }
+    </style>
+    <script>
+        const user = {
+            name: 'Xinyun Zhang',
+            titles: [
+                ['📔', 'Student'],
+                ['💻', 'Software Engineer']
+            ],
+            qualifications: [
+                'MSc. Data Science',
+                'BSc. Software Engineering (Honors)'
+            ],
+            socialLinks: [
+                {
+                    social: 'LinkedIn',
+                    url: 'https://www.linkedin.com/in/asabeneh/',
+                    fontawesomeIcon: '<i class="fab fa-linkedin">'
+                },
+                {
+                    social: 'Github',
+                    fontawesomeIcon: '<i class="fab fa-github-square"></i>',
+                    url: 'https://github.com/XinYun2020'
+                },
+                // {
+                //   social: 'DEV.to',
+                //   fontawesomeIcon: '',
+                //   url: 'https://dev.to/asabeneh'
+                // }
+            ],
+            skills: [
+                'Web Development',
+                'Data Analysis',
+                'Data Visualization',
+                'Programming',
+                'Databases'
+            ],
+            techStack: ['React', 'Redux', 'node', 'python', 'Mongodb', 'html', 'javascript', 'typescript'],
+            bio: 'I am a software engineer, student. I am a life-long learner. If you like to know more about me checkout my LinkedIn or Github profile.'
+        }
+
+
+        const h1 = document.querySelector(`h1`)
+        const h2 = document.querySelector(`h2`)
+        const bioEle = document.querySelector('.bioEle')
+
+        h1.textContent = user.name
+        h2.textContent = user.titles[0][0] + ' ' + user.titles[0][1]
+
+
+        bioEle.textContent = user.bio
+
+
+        const skillContainer = document.createElement(`div`)
+        skillContainer.className = 'skillContainer'
+        skillContainer.style.display = 'grid'
+        skillContainer.style.gridTemplateColumns = 'repeat(3 ,1fr)'
+        document.body.appendChild(skillContainer)
+
+
+        for (let i = 0; i < user.skills.length; i++) {
+            let skillEle = document.createElement('div')
+            skillEle.className = 'skillEle'
+            skillEle.style.fontSize = '24px'
+            skillEle.textContent = user.skills[i]
+            skillContainer.appendChild(skillEle)
+        }
+
+        const techContainer = document.createElement(`div`)
+        techContainer.className = 'techContainer'
+        techContainer.textContent = `The technologies I tech ${techStack[0]}`
+        document.body.appendChild(techContainer)
+
+
+    </script>
+
+</body>
+
+</html>

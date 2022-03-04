@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>30DaysOfJavaScript:23 Day: Keyboard Key </title>
+</head>
+
+<body>
+    <script>
+
+        const h1 = document.createElement('h1')
+        const h2 = document.createElement('h2')
+        h1.className = 'h1'
+        h2.className = 'h2'
+
+        const allContent = document.querySelector('*')
+        allContent.style.textAlign = 'center'
+        allContent.style.fontFamily = 'Roboto'
+        allContent.style.fontSize = '68px'
+        allContent.style.color = 'white'
+        allContent.style.backgroundColor = 'teal'
+        allContent.style.margin = '100px'
+        // h1.style.boxShadow = '1px 2px'
+        h1.style.borderStyle = 'Solid'
+        h2.style.borderStyle = 'Solid'
+
+        document.body.addEventListener('keydown', e => {
+            // alert(String.fromCharCode(e.keyCode))
+            // console.log(String.fromCharCode(e.keyCode))
+            console.log(e.keyCode)
+
+            const keyDisplay = n => {
+                if (e.keyCode == 8) {
+                    return 'Backspace'
+                } else if (e.keyCode == 9) {
+                    return 'Tab'
+                } else if (e.keyCode == 13) {
+                    return 'Enter'
+                } else if (e.keyCode == 16) {
+                    return 'Shift'
+                } else if (e.keyCode == 17) {
+                    return 'Ctrl'
+                } else if (e.keyCode == 18) {
+                    return 'Option/Alt'
+                } else if (e.keyCode == 20) {
+                    return 'Cap'
+                } else if (e.keyCode == 32) {
+                    return 'Space'
+                } else if (e.keyCode == 93) {
+                    return 'Command/Win'
+                } else if (e.keyCode == 220) {
+                    return '|'
+                } else {
+                    return String.fromCharCode(e.keyCode)
+                }
+            }
+            h1.textContent = `You pressed ${keyDisplay(e.keyCode)}`
+            h2.textContent = `${e.keyCode}`
+            document.body.appendChild(h1)
+            document.body.appendChild(h2)
+
+            console.log(keyDisplay(e.keyCode))
+        }
+        )
+
+    </script>
+
+</body>
+
+</html>

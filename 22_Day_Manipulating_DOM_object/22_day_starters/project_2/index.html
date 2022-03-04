@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>30DaysOfJavaScript:22 Day: World Countries List</title>
+</head>
+
+<body>
+    <header>
+        <h2>World Countries List</h2>
+
+        <h4 id="total-countries"></h4>
+        <h3>30DaysOfJavaScript:DOM-Day-2</h3>
+        <h3>Author: Asabeneh Yetayeh</h3>
+
+    </header>
+
+    <div class="countries-container">
+        <div class="countries-wrapper">
+
+        </div>
+    </div>
+
+    <script src="./data/countries.js"></script>
+    <!-- <script src="./js/script.js"></script> -->
+    <script>
+        const allContent = document.querySelector('*')
+        allContent.style.textAlign = 'center'
+        allContent.style.marginLeft = '50px'
+        allContent.style.marginRight = '50px'
+        allContent.style.fontFamily = 'Roboto'
+
+        const h2 = document.querySelector('h2')
+        h2.textContent = h2.textContent.toUpperCase()
+        h2.style.fontSize = '30px'
+        h2.style.letterSpacing = '5px'
+        const h4 = document.querySelector('#total-countries')
+        h4.textContent = `Total Bumber of countriesL ${countries.length}`
+        h4.style.lineHeight = '0'
+        const subTitles = document.querySelectorAll('h3')
+        subTitles.forEach(subTitle => {
+            subTitle.style.fontSize = '12px'
+            subTitle.style.lineHeight = '0'
+        })
+
+        const container = document.createElement('div')
+        container.className = 'container'
+        document.body.appendChild(container)
+        container.style.display = 'grid'
+        container.style.gridTemplateColumns = 'repeat(6, 1fr)'
+        container.style.gap = '5px'
+        container.style.gridAutoRows = 'minmax(100px, auto)'
+
+        for (let i = 0; i < countries.length; i++) {
+            let country = document.createElement('div')
+            country.className = 'country'
+            country.textContent = countries[i].toUpperCase()
+            container.appendChild(country)
+        }
+
+        const countryDiv = document.querySelectorAll('div.country')
+        for (let i = 0; i < countryDiv.length; i++) {
+            countryDiv[i].style.padding = '50px 0'
+            // countryDiv[i].style.margin = '10px'
+            countryDiv[i].style.border = '1px solid lightgrey'
+            // countryDiv[i].style.backgroundColor = 'white'
+            countryDiv[i].style.borderRadius = '5px'
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+
+</html>

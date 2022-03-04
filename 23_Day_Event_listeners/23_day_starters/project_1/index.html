@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>30DaysOfJavaScript:23 Day: Number Generator </title>
+</head>
+
+<body>
+    <h1>Number Generator</h1>
+    <h2>30DaysOfJavaScript:DOM Day 2</h2>
+    <h3>Author: Asabeneh Yetayeh</h3>
+    <input type="text" id="amount" placeholder="say something" />
+
+    <div class="wrapper">
+
+    </div>
+    <!-- <script src="./scripts/main.js"></script> -->
+    <script>
+
+        const h1 = document.querySelector('h1')
+        const h2 = document.querySelector('h2')
+        const h3 = document.querySelector('h3')
+        const allContent = document.querySelector('*')
+
+        allContent.style.textAlign = 'center'
+        allContent.style.fontFamily = 'Roboto'
+        allContent.style.paddingLeft = '45px'
+        allContent.style.paddingRight = '45px'
+        h2.style.textDecoration = 'underline'
+        h2.style.fontSize = '14px'
+        h3.style.textDecoration = 'underline'
+        h3.style.fontSize = '13px'
+        h3.style.marginBottom = '40px'
+
+        const container = document.createElement('div')
+        container.className = 'container'
+        // container.textContent = 'place holder'
+        document.body.appendChild(container)
+        container.style.display = 'grid'
+        // container.style.gridTemplateColumns = '1fr 1fr 1fr 1fr 1fr 1fr'
+        container.style.gridTemplateColumns = 'repeat(9 ,1fr)'
+        // container.style.backgroundColor = 'transparent'
+
+        const isPrime = n => {
+            for (let i = 2, s = Math.sqrt(n); i <= s; i++)
+                if (n % i === 0) return false;
+            return n > 1;
+        }
+
+        const input = document.querySelector('input')
+        let number
+        input.addEventListener('change', e => {
+            let amountNumber = e.target.value
+            container.innerHTML = ''
+            for (let i = 0; i <= amountNumber; i++) {
+                number = document.createElement('div')
+                number.className = 'number'
+                number.style.fontSize = '24px'
+                number.textContent = i
+                // console.log(title)
+                container.appendChild(number)
+            }
+            const numberDiv = document.querySelectorAll('div.number')
+
+            for (let i = 0; i < numberDiv.length; i++) {
+                // numberDiv[i].style.padding = '10px'
+                // numberDiv[i].style.paddingLeft = '30px'
+                // numberDiv[i].style.paddingRight = '30px'
+                numberDiv[i].style.borderRadius = '5px'
+                numberDiv[i].style.color = 'white'
+                numberDiv[i].style.margin = '2px'
+
+                // console.log(numberDiv[i].textContent)
+                if (i % 2 == 0) {
+                    numberDiv[i].style.backgroundColor = 'mediumseagreen'
+                }
+                if (i % 2 == 1) {
+                    numberDiv[i].style.backgroundColor = 'gold'
+                }
+                if (isPrime(i) == true) {
+                    numberDiv[i].style.backgroundColor = 'salmon'
+                }
+            }
+        })
+
+
+    </script>
+
+</body>
+
+</html>

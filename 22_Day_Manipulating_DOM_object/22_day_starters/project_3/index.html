@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>30DaysOfJavaScript:22 Day: Challenge Info</title>
+</head>
+
+<body>
+    <div class="wrapper">
+    </div>
+
+    <script src="./data/challenges_info.js"></script>
+    <!-- <script src="./js/script.js"></script> -->
+    <script>
+
+        // create and append element
+        const container = document.createElement('div')
+        container.className = 'container'
+        document.body.appendChild(container)
+
+        for (let i = 0; i < 3; i++) {
+            const titles = document.createElement('div')
+            titles.className = `h${i + 1}`
+            titles.textContent = `h${i + 1} placeholder`
+            container.appendChild(titles)
+        }
+
+        const challengesList = document.createElement('div')
+        challengesList.className = `challengesList`
+        challengesList.style.display = 'grid'
+        // challengesList.style.gridTemplateColumns = 'repeat(3, 1fr)'
+        // challengesList.textContent =  ` placeholder`
+        challengesList.style.rowGap = '2px'
+        document.body.appendChild(challengesList)
+
+        console.log(asabenehChallenges2020.challenges[0].name)
+        for (let i = 0; i < asabenehChallenges2020.challenges.length; i++) {
+            const challengeElement = document.createElement('div')
+            challengeElement.className = `challengeElement${i}`
+            challengeElement.textContent = `${asabenehChallenges2020.challenges[i].name}`
+
+            challengeElement.style.backgroundColor = 'salmon'
+            challengeElement.style.display = 'grid'
+            challengeElement.style.gridTemplateColumns = 'repeat(3, 1fr)'
+            for (let j = 0; j < 2; j++) {
+                const challengeElementContent = document.createElement('div')
+                challengeElementContent.className = `challengeElementContent${j}`
+                if (j == 0) { // column 2
+                    // create element
+                    const challengeTopicDetails = document.createElement('details')
+                    const challengeTopicSummary = document.createElement('summary')
+                    const challengeTopicP = document.createElement('p')
+                    challengeTopicDetails.className = `challengeTopicDetails`
+                    challengeTopicSummary.className = `challengeTopicSummary`
+                    challengeTopicP.className = `challengeTopicP`
+                    challengeTopicSummary.textContent = asabenehChallenges2020.challenges[i].topics[0]
+                    // Append
+                    challengeElementContent.appendChild(challengeTopicDetails)
+                    challengeTopicDetails.appendChild(challengeTopicSummary)
+                    challengeTopicDetails.appendChild(challengeTopicP)
+
+                    // Apeendtopic detail
+                    for (let topic_i = 1; topic_i < asabenehChallenges2020.challenges[i].topics.length; topic_i++) {
+                        const challengeTopicPContent = document.createElement('p')
+                        challengeTopicPContent.className = `challengeTopicPContent`
+                        challengeTopicPContent.textContent = ` ${asabenehChallenges2020.challenges[i].topics[topic_i]}`
+                        challengeTopicP.appendChild(challengeTopicPContent)
+                    }
+
+                    // style 
+                    challengeTopicDetails.style.textAlign = 'left'
+                    challengeTopicDetails.style.marginLeft = '50px'
+
+                } else { // column 3
+                    challengeElementContent.textContent = asabenehChallenges2020.challenges[i].status
+                    if (challengeElementContent.textContent == 'Done') {
+                        console.log(`.challengeElement${i}`)
+                        let colorElement = document.querySelector(`.challengeElement1`)
+                        // document.querySelector(`.challengeElement${i}`).style.backgroundColor = 'mediumseagreen'
+                    }
+                }
+                challengeElement.appendChild(challengeElementContent)
+            }
+            challengeElement.style.padding = '50px 0'
+            challengesList.appendChild(challengeElement)
+
+        }
+
+        // querySelect and style
+        const allContent = document.querySelector('*')
+        allContent.style.textAlign = 'center'
+        allContent.style.fontFamily = 'Roboto'
+
+        const h1 = document.querySelector('.h1')
+        const h2 = document.querySelector('.h2')
+        const h3 = document.querySelector('.h3')
+        h1.textContent = `${asabenehChallenges2020.challengeTitle} `
+        h2.textContent = asabenehChallenges2020.challengeSubtitle
+        h2.style.textDecoration = 'underline'
+        const yearElement = document.createElement('span')
+        yearElement.textContent = asabenehChallenges2020.challengeYear
+        h1.appendChild(yearElement)
+        h3.style.marginBottom = '10px'
+
+        // change every second
+        const changeInSeconds = setInterval(change, 1000);
+        const colors = ["salmon", "gold", "orange", "mediumseagreen"];
+        let i = 0
+        function change() {
+            document.querySelector("span").style.color = colors[i]
+            document.querySelector("span").style.fontSize = '48px'
+            i = (i + 1) % colors.length
+
+            let currentTime = new Date()
+            h3.textContent = currentTime.toLocaleString()
+            h3.style.backgroundColor = colors[i + 1]
+            // h3.style.marginLeft = '400px'
+            // h3.style.marginRight = '400px'
+
+        }
+    </script>
+
+</body>
+
+</html>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>30DaysOfJavaScript:21 Day </title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Asabeneh Yetayeh challenges in <span>2020</span></h1>
+        <h2>30DaysOfJavaScript Challenge</h2>
+        <h3></h3>
+        <ul>
+            <li>30DaysOfPython Challenge Done</li>
+            <li>30DaysOfJavaScript Challenge Ongoing</li>
+            <li>30DaysOfReact Challenge Coming</li>
+            <li>30DaysOfFullStack Challenge Coming</li>
+            <li>30DaysOfDataAnalysis Challenge Coming</li>
+            <li>30DaysOfReactNative Challenge Coming</li>
+            <li>30DaysOfMachineLearning Challenge Coming</li>
+        </ul>
+    </div>
+    <script>
+        const titles = document.querySelectorAll('h1,h2,h3')
+        titles.forEach(title => title.style.textAlign = 'center')
+        document.querySelector('h2').style.textDecoration = 'underline'
+        document.querySelector('h3').style.textAlign = 'center' 
+
+
+        // const allContent = document.querySelector('*')
+        // allContent.style.textAlign = 'center'
+        const listElements = document.querySelectorAll('li')
+        for (let i = 0; i < listElements.length; i++) {
+            listElements[i].style.textAlign = 'left'
+            listElements[i].style.marginTop = '3px'
+            listElements[i].style.padding = '20px'
+            listElements[i].style.marginLeft = '50px'
+            listElements[i].style.marginRight = '50px'
+            listElements[i].style.backgroundColor = 'salmon'
+            listElements[i].className = 'list'
+            listElements[i].id = `${i}-list`
+            //listElements[i].type = `checkbox`
+            //listElements[i].classList.remove('type', `checkbox`)
+        }
+        const doingChallengeList = [1,2]
+        doingChallengeList.forEach(doingChallenge => listElements[doingChallenge].style.backgroundColor = 'gold')
+        const doneChallengeList = []
+        doneChallengeList.forEach(doneChallenge => listElements[doneChallenge].style.backgroundColor = 'mediumseagreen')
+
+        const changeInSeconds = setInterval(change, 1000);
+        const colors = ["salmon", "gold", "orange", "mediumseagreen"];
+        let i = 0
+        function change() {
+            // document.querySelector("h1").textContent.substr(31,4)
+            document.querySelector("span").style.color = colors[i]
+            document.querySelector("span").style.fontSize = '48px'
+            i = (i + 1) % colors.length
+
+            let currentTime = new Date()
+            document.querySelector('h3').textContent = currentTime.toLocaleString()
+            document.querySelector('h3').style.backgroundColor = colors[i+1]
+            document.querySelector('h3').style.marginLeft = '400px'
+            document.querySelector('h3').style.marginRight = '400px'
+
+        }
+    </script>
+
+</body>
+</html>

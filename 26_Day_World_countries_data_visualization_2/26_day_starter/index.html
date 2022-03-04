@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>30DaysOfJavaScript:11 Day </title>
+</head>
+
+<body>
+    <header>
+        <h1>WORLD COUNTIES LIST</h1>
+        <h2></h2>
+        <button class="start">STARTING WORD</button>
+        <button class="search">SEARCH WITH ANY WORD</button>
+        <button class="sort">
+            <div class='buttons'><span class='arrow'>&#8595;</span><span>A</span>
+                <span>Z</span>
+            </div>
+        </button>
+        <p></p>
+        <input type="text" id="country" placeholder="Search country...">
+        <button class="submit">Submit</button>
+    </header>
+    <main>
+        <div class="wrapper">
+        </div>
+    </main>
+
+    <script src="./data/countries.js"></script>
+    <script src="./scripts/main.js"></script>
+    <style>
+        header {
+            /* background: url(images/globe-2.jpg); */
+            margin: 0px;
+            padding-top: 10px;
+            padding-bottom: 30px;
+            overflow: hidden;
+            background-image: url(images/globe-2.jpg);
+
+        }
+
+        h1 {
+            font-size: 48pt;
+            letter-spacing: 5pt;
+        }
+
+        body {
+            /* background: url(images/globe-2.jpg); */
+            margin: 0px;
+            font-family: Helvetica;
+            text-align: center;
+            color: white;
+
+        }
+
+        input {
+            width: 350px;
+            height: 34px;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        /* .contries-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            background-color: bisque;
+            height: fit-content;
+        } */
+        .wrapper {
+            background-color: beige;
+
+        }
+
+        .countryEle {
+            background-image: url(images/map_image.jpg);
+            background-size: cover;
+            height: 50px;
+            margin-left: 40px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border:1px solid whitesmoke; 
+            background-position-x: -40px;   
+            text-align: center;
+            padding: 50px 0;
+
+
+        }
+    </style>
+    <script>
+        const h2 = document.querySelector('h2')
+        h2.textContent = `Total Number of Countries: ${countries.length}`
+        const wrapper = document.querySelector('.wrapper')
+
+        const contriesContainer = document.createElement('div')
+        contriesContainer.className = 'contriesContainer'
+        contriesContainer.style.display = 'grid'
+        contriesContainer.style.gridTemplateColumns = 'repeat(6 ,1fr)'
+
+        // contriesContainer.innerHTML = ''
+        for (let i = 0; i <= countries.length; i++) {
+            let countryEle = document.createElement('div')
+            countryEle.className = 'countryEle'
+            countryEle.style.fontSize = '24px'
+            countryEle.textContent = countries[i]
+            console.log(countries[i])
+            contriesContainer.appendChild(countryEle)
+
+        }
+        wrapper.appendChild(contriesContainer)
+
+
+    </script>
+
+</body>
+
+
+</html>

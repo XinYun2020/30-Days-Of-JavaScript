@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document Object Model:30 Days Of JavaScript</title>
+</head>
+
+<body>
+    <h1>Key events: Press any key</h1>
+
+    <script>
+        document.body.addEventListener('keydown', e => {
+            // alert(String.fromCharCode(e.keyCode))
+            // console.log(String.fromCharCode(e.keyCode))
+            console.log(e.keyCode)
+
+            const keyDisplay = n => {
+                if (e.keyCode == 8) {
+                    return 'Backspace'
+                } else if (e.keyCode == 9) {
+                    return 'Tab'
+                } else if (e.keyCode == 13) {
+                    return 'Enter'
+                } else if (e.keyCode == 16) {
+                    return 'Shift'
+                } else if (e.keyCode == 17) {
+                    return 'Ctrl'
+                } else if (e.keyCode == 18) {
+                    return 'Option/Alt'
+                } else if (e.keyCode == 20) {
+                    return 'Cap'
+                } else if (e.keyCode == 93) {
+                    return 'Command/Win'
+                } else {
+                    return String.fromCharCode(e.keyCode)
+                }
+            }
+
+            console.log(keyDisplay(e.keyCode))
+        }
+      )
+    </script>
+</body>
+
+</html>

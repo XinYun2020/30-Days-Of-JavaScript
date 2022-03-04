@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>World Countries Data</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+    <header id="countries">
+        <h2>World Countries Data</h2>
+        <p class="subtitle"></p>
+        <p class="feedback"></p>
+    </header>
+    <main>
+
+        <div class="wrapper">
+            <div class="graph-buttons">
+                <button class='button' id="population">Population</button>
+                <button class='button' id="languages">Languages</button>
+            </div>
+        </div>
+
+        <div class="graphs">
+            <div class="graph-description"></div>
+            <div class="graph-wrapper" id="stat">
+            </div>
+        </div>
+        </div>
+        </div>
+
+
+    </main>
+
+    <script src="./data/countries_data.js"></script>
+    <script src="./js/main.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: gainsboro;
+            text-align: center;
+            font-family: Roboto;
+
+        }
+
+
+
+        .subtitle {
+            font-size: 22px;
+        }
+
+        .graph-buttons {
+            padding-top: 20px;
+            box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+
+        }
+
+        button {
+            font-size: 26px;
+            border-radius: 3pt;
+            border-color: orange;
+            background-color: orange;
+            color: black;
+
+        }
+
+        .wrapper {
+            background-color: whitesmoke;
+
+        }
+
+        .graph-description {
+            font-size: 18px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: whitesmoke;
+            box-shadow: 0px 5px 2px rgba(0, 0, 0, 0.2);
+
+        }
+    </style>
+    <script>
+
+
+        const graphWrapper = document.querySelector('.graph-wrapper')
+
+        const subtitleElement = document.querySelector(".subtitle");
+        const populationButton = document.querySelector("#population");
+        const languagesButton = document.querySelector("#languages");
+        const graphTitle = document.querySelector(".graph-title");
+        const countriesElement = document.querySelector(".countries");
+        const languagesElement = document.querySelector(".languages");
+        const graphDescription = document.querySelector(".graph-description");
+        const graphsDiv = document.querySelector(".graphs");
+        const countriesDescription = document.querySelector(".description-countries");
+        const languagesDescription = document.querySelector(".description-languages");
+        const subtitleDiv = document.querySelector(".subtitle");
+
+        subtitleDiv.textContent = `Currently, we have ${countries.length} countries`
+
+
+        populationButton.addEventListener("click", function () {
+            graphDescription.innerHTML = ""
+
+            let descriptionPopulation = document.createElement("div")
+            descriptionPopulation.className = 'descriptionPopulation'
+            descriptionPopulation.textContent = '10 most populated countries in the world'
+            graphDescription.appendChild(descriptionPopulation)
+            // console.log(countries[1].name) // country name, need to add world population
+            // console.log(countries[1].population) // country name, need to add world population
+            const populationOrder = countries.sort((a,b) => b.population - a.population)
+            // for (const country of populationOrder) {
+            //     // console.log(country.population) 
+            // }
+
+            
+        })
+
+        languagesButton.addEventListener("click", function () {
+            graphDescription.innerHTML = ""
+
+            let descriptionLanguages = document.createElement("div")
+            descriptionLanguages.className = 'descriptionLanguages'
+            descriptionLanguages.textContent = '10 Most spoken language in the World'
+            graphDescription.appendChild(descriptionLanguages)
+
+            console.log(countries[1].languages) // country name, need to add world population
+
+            const langagesList = []
+            for (let i = 0; i < countries.length; i++) {
+                langagesList.push()
+            }
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Solar System: Document Object Model:30 Days Of JavaScript</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Calculate a weight of an object on a planet</h1>
+
+        <input type="text" id="mass" placeholder="Mass in Kilogram" />
+        <select>
+            <option value='none'>--select planet-- </option>
+            <option value="mercury">mercury</option>
+            <option value="venus">venus</option>
+            <option value="earth">earth</option>
+            <option value="mars">mars</option>
+            <option value="jupiter">jupiter</option>
+            <option value="saturn">saturn</option>
+            <option value="uranus">uranus</option>
+            <option value="neptune">neptune</option>
+            <option value="pluto">pluto</option>
+        </select>
+        <button>Calculate weight</button>
+
+    </header>
+    <main>
+        <div class="flex-container">
+            <div class="flex-item image">
+                <img src='./images/earth.png' class="planet-image" />
+            </div>
+            <div class="flex-item description"></div>
+
+        </div>
+
+    </main>
+
+    <style>
+        body {
+            background: url(images/galaxy.gif);
+        }
+
+        h1 {
+            color: white;
+            font-family: Roboto;
+            font-size: 55px;
+        }
+
+        input {
+            font-size: 22px;
+        }
+
+        select {
+            font-size: 24px;
+        }
+
+        button {
+            font-size: 22px;
+        }
+
+        .flex-container {
+            font-size: 22px;
+            padding: 55px;
+            margin: 55px;
+            border-style: solid;
+            border-radius: 25px;
+            border-color: grey;
+        }
+    </style>
+
+    <script>
+        const allContent = document.querySelector('*')
+        allContent.style.textAlign = 'center'
+        allContent.style.fontFamily = 'Roboto'
+        // const h1 = document.querySelector('h1')
+        // h1.style.color = 'white'
+
+        // Background
+        // const body = document.querySelector('body')
+        // body.background = 'images/galaxy.gif'
+
+        const space = {
+            mercury: {
+                gravity: 0.38,
+                image: "mercury.png"
+            },
+            venus: {
+                gravity: 0.91,
+                image: "venus.png"
+            },
+            earth: {
+                gravity: 1.0,
+                image: "earth.png"
+            },
+            mars: {
+                gravity: 0.38,
+                image: "mars.png"
+            },
+            jupiter: {
+                gravity: 2.34,
+                image: "jupiter.png"
+            },
+            saturn: {
+                gravity: 0.93,
+                image: "saturn.png"
+            },
+            uranus: {
+                gravity: 0.92,
+                image: "uranus.png"
+            },
+            neptune: {
+                gravity: 1.12,
+                image: "neptune.png"
+            }
+        }
+        const input = document.querySelector("input")
+        const select = document.querySelector("select")
+        const button = document.querySelector("button")
+        const container = document.querySelector(".flex-container")
+        // container.style.padding = '55px'
+        // container.style.margin = '55px'
+        // container.style.borderStyle = 'solid'
+        // container.style.borderRadius = '25px'
+        // container.style.borderColor = 'grey'
+
+        const containerUI = (img, text) => {
+            let image = document.createElement("img")
+            image.src = `images/${img}`
+            let p = document.createElement("p")
+            p.textContent = `${text} N`
+            p.style.color = 'white'
+            p.style.fontSize = '45px'
+
+            p.style.width = '250px'
+            p.style.height = '250px'
+            p.style.lineHeight = '250px'
+            p.textAlign = 'center'
+            p.style.background = 'gray'
+            p.style.borderRadius = '50%'
+            // p.style.padding = '50px 0'
+
+            container.appendChild(image)
+            container.appendChild(p)
+        }
+
+        let weight
+        button.addEventListener("click", function () {
+            //event listener for empty input
+            if (input.value === "") {
+                container.textContent = "";
+                let p = document.createElement("p")
+                p.textContent = `Mass is required`
+                p.style.color = 'white'
+                p.style.fontSize = '45px'
+                p.style.lineHeight = '250px'
+                p.textAlign = 'center'
+                p.style.background = 'gray'
+                p.style.borderRadius = '50px'
+                // p.style.padding = '50px 0'
+                container.appendChild(p)
+            } else {
+                let imgSrc;
+                container.innerHTML = "";
+                imgSrc = space[select.value].image; // e.g space[earth],image
+                weight = Number(input.value) * space[select.value].gravity;
+                containerUI(imgSrc, weight);
+            }
+
+        })
+
+    </script>
+</body>
+
+</html>
